@@ -38,31 +38,34 @@ def Algorithm4(image):
     lane_drawn = np.dstack((blanks, prediction, blanks))
 
     # Re-size to match the original image
-    lane_image = imresize(lane_drawn, (480, 640, 3))
+    lane_image = imresize(lane_drawn, (240, 640, 3))
     
     ####################################################################
     global x1Start
     x1Start = 0
     global y1Start 
-    y1Start = 5
+    y1Start = 10
     global x2Start
     x2Start = 0
     global y2Start
-    y2Start = 5
+    y2Start = 10
     
     #which row to look at
-    rowStart = 480 - y1Start - 1
+    rowStart = 240 - y1Start - 1
+
+    #how many of the next pixels to look at
+    numLook = 10
     
     #find x1Start
     count = 0
     for pixel in lane_image[rowStart]:
         #640 columns
-        if count < 634:
-            #check to see if the point and the next 5 points are solid green
+        if count < 640-numLook-1:
+            #check to see if the point and the next numLook points are solid green
             works = True
             extra = 0
-            while (extra < 6):
-                if lane_image[rowStart][count+extra][1] < 150:
+            while (extra < numLook + 1):
+                if lane_image[rowStart][count+extra][1] < 100:
                     works = False
                     break
                 extra = extra + 1
@@ -75,12 +78,12 @@ def Algorithm4(image):
     count = 639
     for pixel in lane_image[rowStart]:
         #160 columns
-        if count > 4:
-            #check to see if the point and the next 5 points are solid green
+        if count > numLook - 1:
+            #check to see if the point and the next numLook points are solid green
             works = True
             extra = 0
-            while (extra < 6):
-                if lane_image[rowStart][count-extra][1] < 150:
+            while (extra < numLook + 1):
+                if lane_image[rowStart][count-extra][1] < 100:
                     works = False
                     break
                 extra = extra + 1
@@ -89,8 +92,8 @@ def Algorithm4(image):
                 break
         count = count - 1
         
-    y1Start = 480 - y1Start - 1
-    y2Start = 480 - y2Start - 1
+    y1Start = 240 - y1Start - 1
+    y2Start = 240 - y2Start - 1
     '''
     print(x1Start)
     print(y1Start)
@@ -109,7 +112,7 @@ def Algorithm4(image):
     y2End = 80
     
     #which row to look at
-    rowStart = 480 - y1End - 1
+    rowStart = 240 - y1End - 1
     
     #find x1End
     count = 0
@@ -147,8 +150,8 @@ def Algorithm4(image):
                 break
         count = count - 1
     
-    y1End = 480 - y1End - 1
-    y2End = 480 - y2End - 1
+    y1End = 240 - y1End - 1
+    y2End = 240 - y2End - 1
     '''
     print("------")
     print(x1End)
@@ -196,15 +199,15 @@ def algo4GetSlopes(image):
     #don't resize because that will cause distortion and loss of accuracy
     #image = imresize(image, (480, 640, 3))
 
-    #cv2.imwrite("INPUT.jpg",image)
+    cv2.imwrite("INPUT.jpg",image)
 
     #imgCopy = image.copy()
 
     blur = cv2.GaussianBlur(image,(13,13), 0)
-    #cv2.imwrite("GAUSS.jpg",blur)
+    cv2.imwrite("GAUSS.jpg",blur)
 
-    edges = cv2.Canny(blur,10,100)
-    #cv2.imwrite("CANNNY.jpg",edges)
+    edges = cv2.Canny(blur,50,100)
+    cv2.imwrite("CANNNY.jpg",edges)
     
     lines = cv2.HoughLinesP(edges, 1, np.pi/180, 40, np.array([]), minLineLength=10, maxLineGap=50)
     #cv2.imwrite('HOUGH.jpg',lines)        
@@ -233,16 +236,18 @@ def algo4GetSlopes(image):
      
     #for the neural net
     #gray_output = cv2.cvtColor(output, cv2.COLOR_BGR2GRAY)
+
+    output = output[240:,:]
     
     #this is the actual neural net input
-    #cv2.imwrite("NeuralNetInput.jpg", output)
+    cv2.imwrite("NeuralNetInput.jpg", output)
 
     lines = Algorithm4(np.array(output))
     
     #black image
     realLanes = image.copy()
-    cv2.line(realLanes, (x1Start, y1Start), (x1End, y1End), color=[255, 255, 255], thickness=2)
-    cv2.line(realLanes, (x2Start, y2Start), (x2End, y2End), color=[255, 255, 255], thickness=2)
+    cv2.line(realLanes, (x1Start, y1Start+240), (x1End, y1End+240), color=[255, 255, 255], thickness=2)
+    cv2.line(realLanes, (x2Start, y2Start+240), (x2End, y2End+240), color=[255, 255, 255], thickness=2)
     cv2.imwrite('Algo4.jpg', realLanes)
     
     return lines

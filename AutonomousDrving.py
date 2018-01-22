@@ -46,33 +46,56 @@ def stream_video():
         slope1 = laneSlopes[0]
         slope2 = laneSlopes[1]
         
-        if (slope1 is 1000 or slope1 is 0):
-            if (slope2 is 1000):
-                print("Going forward because slope1 is " + str(slope1)+ " and slope2 is " + str(slope2))
-            elif (slope2 is 0):
-                print("Going forward because slope1 is " + str(slope1)+ " and slope2 is " + str(slope2))
+        print("-------------")
+        print("slope1 is " + str(slope1)+ " and slope2 is " + str(slope2))
+        if ((slope1 == 1000) or (slope1 == 0)):
+            if (slope2 == 1000):
+                pass
+            elif (slope2 == 0):
+                pass
             elif (slope2 > 0):
-                print("Turning right because slope1 is " + str(slope1)+ " and slope2 is " + str(slope2))
+                print("Going forward, then turning right")
+                robot.forward()
+                time.sleep(2)
                 robot.turn_degrees(20,True)
                 time.sleep(1)
             #slope2 is negative
             else:
-                print("Turning left because slope1 is " + str(slope1)+ " and slope2 is " + str(slope2))
-                robot.turn_degrees(20,True)
+                print("Going forward, then turning left")
+                robot.forward()
+                time.sleep(2)
+                robot.turn_degrees(-20,True)
                 time.sleep(1)
-        elif (slope2 is 1000 or slope2 is 0):
+        elif ((slope2 == 1000) or (slope2 == 0)):
             if (slope1 > 0):
-                print("Turning right because slope1 is " + str(slope1)+ " and slope2 is " + str(slope2))
+                print("Going forward, then turning right")
+                robot.forward()
+                time.sleep(2)
                 robot.turn_degrees(20,True)
                 time.sleep(1)
             #slope1 is negative
             else:
-                print("Turning left because slope1 is " + str(slope1)+ " and slope2 is " + str(slope2))
+                print("Going forward, then turning left")
+                robot.forward()
+                time.sleep(2)
+                robot.turn_degrees(-20,True)
+                time.sleep(1)
+        else:
+            if (slope1 != 1000 and slope2!= 1000 and slope1 > 0 and slope2 > 0):
+                print("Going forward, then turning right")
+                robot.forward()
+                time.sleep(2)
                 robot.turn_degrees(20,True)
                 time.sleep(1)
-                
+            elif (slope1 != 1000 and slope2!= 1000 and slope1 < 0 and slope2 < 0):
+                print("Going forward, then turning left")
+                robot.forward()
+                time.sleep(2)
+                robot.turn_degrees(-20,True)
+                time.sleep(1)
+        print("Going forward")
         robot.forward()
-        time.sleep(1)
+        time.sleep(2)
         robot.stop()
         
         # clear the stream in preparation for the next frame
