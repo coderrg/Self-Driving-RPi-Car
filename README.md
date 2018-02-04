@@ -12,4 +12,29 @@ The practical performance measure was evaluated for each of the algorithms five 
   After collecting all the data, the overall performance scores (the average of the practical numeric percentage times 10 (e.g. 75% x 10 = 750) and the theoretical score) came out to be 702.48, 858.55, 942.60, and 990.54 out of 1000 for Algorithm 1, Algorithm 2, Algorithm 3, and Algorithm 4, respectively, proving how Algorithm 4 was the best overall algorithm.
 # Final Product
 In conclusion, the final product created out of this project was a Raspberry-Pi autonomous vehicle that used Algorithm 4 to accurately and consistently detect the edges of the path and thus navigate the path, regardless of the shape of the path. Hence, the engineering goal was met.
+# Credits
+The basic dataset for this project came from https://github.com/mvirgo/MLND-Capstone/, although the images in the dataset were significantly modified for the purpose of this project. Michael Virgo's project wa sbeneficial to me in elements of this project such as the creation of the convolutional neural network. A big thansk to him.
 
+Here is his MIT License.
+
+MIT License
+
+Copyright (c) 2017 Michael Virgo
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
