@@ -1,0 +1,11 @@
+The equation describing the actual left edge is y = -0.7843137254901961x + 315.29411764705884
+The equation describing the actual right edge is y = -0.3x + 206.0
+
+The midpoint of the left edge is (187,174)
+The midpoint of the right edge is (491,207)
+
+Performance Measure 1: 1000 - 4.227408555990504 = 995.7725914440095
+
+Performance Measure 2: 1000 - 142.0456380982967 = 857.9543619017034
+
+Performance Measure 3: 1000 - 0.9010199347007477 = 999.0989800652992
