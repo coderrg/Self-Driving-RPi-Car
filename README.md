@@ -13,7 +13,7 @@ The practical performance measure was evaluated for each of the algorithms five 
 # Final Product
 In conclusion, the final product created out of this project was a Raspberry-Pi autonomous vehicle that used Algorithm 4 to accurately and consistently detect the edges of the path and thus navigate the path, regardless of the shape of the path. Hence, the engineering goal was met.
 # Credits
-The basic dataset for this project came from https://github.com/mvirgo/MLND-Capstone/, although the images in the dataset were significantly modified for the purpose of this project. Michael Virgo's project wa sbeneficial to me in elements of this project such as the creation of the convolutional neural network. A big thansk to him.
+The basic dataset for this project came from https://github.com/mvirgo/MLND-Capstone/, although the images in the dataset were significantly modified for the purpose of this project. Michael Virgo's project was beneficial to me in elements of this project such as the creation of the convolutional neural network. A big thanks to him.
 
 Here is his MIT License.
 
