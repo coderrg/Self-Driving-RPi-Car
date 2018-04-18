@@ -1,1 +1,1 @@
-This folder contains the original algorithms as well as how they are deployed on an automous Raspberry-Pi car. I will upload the Convolutional Neural Network python code once I get around to cleaning it up :D. Algorithm 4 is essentially how the CNN is used to make a prediction. 
+This folder contains the original algorithms as well as how they are deployed on an automous Raspberry-Pi car. I will upload the convolutional neural network Python code once I get around to cleaning it up :D. Algorithm 4 is essentially how the CNN is used to make a prediction. 
